@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+  <form method="POST" action="{{ url_for('user') }}">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input name="name" class="form-control" required maxlength="80" placeholder="Your full name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Phone number</label>
+      <input name="phone" class="form-control" required pattern="\d{10}" maxlength="10" minlength="10" placeholder="10 digit number">
+      <div class="form-text">Exactly 10 digits (numbers only)</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Reservation date</label>
+      <input name="date" type="date" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Number of people</label>
+      <input name="people" type="number" class="form-control" required min="1" max="50" value="2">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Time slot</label>
+      <select name="time" class="form-select" required>
+        <option value="7:00 a.m.">7:00 a.m.</option>
+        <option value="10:00 a.m.">10:00 a.m.</option>
+        <option value="1:00 p.m.">1:00 p.m.</option>
+        <option value="4:00 p.m.">4:00 p.m.</option>
+        <option value="7:00 p.m.">7:00 p.m.</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-secondary" type="reset">Reset</button>
+      <button class="btn btn-primary" type="submit">Next</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

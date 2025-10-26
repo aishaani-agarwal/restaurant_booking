@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4 text-center">
+  <h4>Thanks, {{ data.get('name') }}!</h4>
+  <p>Your booking at <strong>{{ data.get('restaurant') }}</strong> is confirmed for <strong>{{ data.get('date') }}</strong> at <strong>{{ data.get('time') }}</strong>.</p>
+  <p>Table: <strong>{{ data.get('table') }}</strong> | People: <strong>{{ data.get('people') }}</strong></p>
+  <p>Reward points: <strong>{{ data.get('reward_points') }}</strong></p>
+  <div class="mt-3">
+    <a class="btn btn-primary" href="{{ url_for('index') }}">Make another booking</a>
+  </div>
+  <hr>
+  <h6 class="text-start mt-3">Your feedback</h6>
+  <p class="text-start"><strong>Rating:</strong> {{ data.get('rating') }}</p>
+  <p class="text-start"><strong>Feedback:</strong> {{ data.get('feedback') or 'No feedback provided' }}</p>
+</div>
+{% endblock %}
