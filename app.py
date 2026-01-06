@@ -32,9 +32,9 @@ def valid_rating(r: str) -> bool:
 
 @app.route('/')
 def index():
-    # clears session for a fresh booking (optional; remove if you want persistent session)
     session.clear()
-    return render_template('index.html')
+    today = datetime.now().strftime("%Y-%m-%d")
+    return render_template('index.html', today=today)
 
 @app.route('/user', methods=['POST'])
 def user():
@@ -185,5 +185,6 @@ def rating():
         return render_template('thankyou.html', data=dict(session))
     return render_template('rating.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)
+
